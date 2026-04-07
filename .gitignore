@@ -1,0 +1,33 @@
+# Binary files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+
+# Database (Security: Do not commit local data)
+notes.db
+notes.db-journal
+
+# Logs
+*.log
+output.log
+
+# Dependency directories (standard for Go)
+# vendor/ # Uncomment if using vendoring
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
