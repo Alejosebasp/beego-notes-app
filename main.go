@@ -42,6 +42,11 @@ func main() {
 	beego.BConfig.Listen.EnableHTTP = false
 	beego.BConfig.Listen.EnableHTTPS = true
 	
+	// Explicitly enable XSRF for production security
+	beego.BConfig.WebConfig.EnableXSRF = true
+	beego.BConfig.WebConfig.XSRFKey = "61be5450a88775246d3200a1210887b9"
+	beego.BConfig.WebConfig.XSRFExpire = 3600
+	
 	hPort := os.Getenv("HTTPS_PORT")
 	if hPort == "" {
 		hPort = "8443"

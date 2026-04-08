@@ -5,7 +5,7 @@
 
 <section class="search-section">
     <form action="/search" method="get" class="search-container">
-        {{xsrfdata}}
+        {{.xsrfdata}}
         <input type="text" name="title" class="search-input" placeholder="Buscar por título..." value="{{.SearchTitle}}">
         <button type="submit" class="btn btn-secondary">Buscar</button>
         {{if .SearchTitle}}

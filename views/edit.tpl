@@ -11,7 +11,7 @@
     {{end}}
 
     <form method="post">
-        {{xsrfdata}}
+        {{.xsrfdata}}
         <div class="form-group">
             <label for="title">Título</label>
             <input type="text" name="title" id="title" class="form-control" required value="{{.Note.Title}}" placeholder="Ingresa el título...">

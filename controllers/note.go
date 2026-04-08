@@ -2,6 +2,7 @@
 package controllers
 
 import (
+	"html/template"
 	"notes-app/models"
 	beego "github.com/beego/beego/v2/server/web"
 )
@@ -18,6 +19,7 @@ func (c *NoteController) Index() {
 		c.Data["Error"] = err.Error()
 	}
 	c.Data["Notes"] = notes
+	c.Data["xsrfdata"] = template.HTML(c.XSRFFormHTML())
 	c.Layout = "layout.tpl"
 	c.TplName = "index.tpl"
 }
@@ -31,6 +33,7 @@ func (c *NoteController) Search() {
 	}
 	c.Data["Notes"] = notes
 	c.Data["SearchTitle"] = title
+	c.Data["xsrfdata"] = template.HTML(c.XSRFFormHTML())
 	c.Layout = "layout.tpl"
 	c.TplName = "index.tpl"
 }
@@ -49,6 +52,7 @@ func (c *NoteController) AddNote() {
 		_, err := models.AddNote(&note)
 		if err != nil {
 			c.Data["Error"] = err.Error()
+			c.Data["xsrfdata"] = template.HTML(c.XSRFFormHTML())
 			c.Layout = "layout.tpl"
 			c.TplName = "add.tpl"
 			return
@@ -56,6 +60,7 @@ func (c *NoteController) AddNote() {
 		c.Redirect("/", 302)
 		return
 	}
+	c.Data["xsrfdata"] = template.HTML(c.XSRFFormHTML())
 	c.Layout = "layout.tpl"
 	c.TplName = "add.tpl"
 }
@@ -77,6 +82,7 @@ func (c *NoteController) EditNote() {
 		if err != nil {
 			c.Data["Error"] = err.Error()
 			c.Data["Note"] = note
+			c.Data["xsrfdata"] = template.HTML(c.XSRFFormHTML())
 			c.Layout = "layout.tpl"
 			c.TplName = "edit.tpl"
 			return
@@ -91,6 +97,7 @@ func (c *NoteController) EditNote() {
 		return
 	}
 	c.Data["Note"] = note
+	c.Data["xsrfdata"] = template.HTML(c.XSRFFormHTML())
 	c.Layout = "layout.tpl"
 	c.TplName = "edit.tpl"
 }
