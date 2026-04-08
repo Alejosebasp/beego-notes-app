@@ -4,6 +4,7 @@ package main
 import (
 	"os"
 	"strconv"
+	"github.com/beego/beego/v2/server/web/context"
 	"notes-app/models"
 	_ "notes-app/routers"
 	"github.com/beego/beego/v2/client/orm"
@@ -50,6 +51,15 @@ func main() {
 	
 	beego.BConfig.Listen.HTTPSCertFile = os.Getenv("HTTPS_CERT")
 	beego.BConfig.Listen.HTTPSKeyFile = os.Getenv("HTTPS_KEY")
+	
+	// Security Middleware: Set security headers and HSTS
+	beego.InsertFilter("*", beego.BeforeRouter, func(ctx *context.Context) {
+		ctx.Output.Header("X-Frame-Options", "SAMEORIGIN")
+		ctx.Output.Header("X-XSS-Protection", "1; mode=block")
+		ctx.Output.Header("X-Content-Type-Options", "nosniff")
+		ctx.Output.Header("Content-Security-Policy", "default-src 'self'; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com; script-src 'self' 'unsafe-inline'")
+		ctx.Output.Header("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
+	})
 	
 	beego.Run()
 }

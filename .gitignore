@@ -36,3 +36,4 @@ Thumbs.db
 
 # Certificates (Security: Do not commit generated certs)
 conf/*.pem
+logsDevelop/
