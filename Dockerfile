@@ -37,7 +37,7 @@ RUN mkdir -p /data && chown appuser:appgroup /data
 COPY --from=builder /app/notes-app .
 COPY --from=builder --chown=appuser:appgroup /app/conf ./conf
 COPY --from=builder --chown=appuser:appgroup /app/views ./views
-# COPY --from=builder --chown=appuser:appgroup /app/static ./static
+COPY --from=builder --chown=appuser:appgroup /app/static ./static
 
 # Set environment variables for flexibility
 ENV DB_PATH=/data/notes.db \

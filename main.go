@@ -62,7 +62,7 @@ func main() {
 		ctx.Output.Header("X-Frame-Options", "SAMEORIGIN")
 		ctx.Output.Header("X-XSS-Protection", "1; mode=block")
 		ctx.Output.Header("X-Content-Type-Options", "nosniff")
-		ctx.Output.Header("Content-Security-Policy", "default-src 'self'; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com; script-src 'self' 'unsafe-inline'")
+		ctx.Output.Header("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; script-src 'self' 'unsafe-inline'")
 		ctx.Output.Header("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
 	})
 	
