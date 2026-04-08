@@ -6,9 +6,11 @@
 *.dylib
 bin/
 
-# Database (Security: Do not commit local data)
+# Database and Data (Security: Do not commit local data)
 notes.db
 notes.db-journal
+data/
+/data/
 
 # Logs
 *.log
@@ -31,3 +33,6 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Certificates (Security: Do not commit generated certs)
+conf/*.pem

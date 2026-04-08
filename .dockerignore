@@ -1,0 +1,26 @@
+# Local runtime data
+notes.db
+notes.db-journal
+*.log
+output.log
+
+# Build artifacts
+notes-app
+bin/
+
+# Dependencies
+vendor/
+
+# Git
+.git
+.gitignore
+
+# Env and IDEs
+.env
+.idea/
+.vscode/
+
+# Docker specific
+Dockerfile
+docker-compose.yml
+.dockerignore

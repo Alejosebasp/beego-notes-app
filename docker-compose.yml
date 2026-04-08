@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: notes-app-secure
+    ports:
+      # Map host 443 to container 8443 (HTTPS for non-root)
+      - "443:8443"
+    volumes:
+      # Persistent storage for the SQLite database
+      - notes_data:/data
+    environment:
+      # Match the settings in app.conf and Dockerfile
+      - DB_PATH=/data/notes.db
+      - HTTPS_PORT=8443
+    restart: unless-stopped
+
+volumes:
+  # Named volume for database persistence
+  notes_data:
